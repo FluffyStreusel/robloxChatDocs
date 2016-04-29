@@ -5,6 +5,7 @@ A documentation of ROBLOX's webchat system written and researched by Stormersoul
 Please note this information **may not be 100% accurate**!
 I cannot emphasize this enough. If you find any errors, please message me on ROBLOX (Stormersoul).
 
+# On the sending end of your chats
 ### What happens when you send a message
 When you send a message through ROBLOX's chat system, it goes through 
 
@@ -27,3 +28,10 @@ When you send a message, ROBLOX sends out **(3?)** different requests to their d
 and once again, it checks for messages at `GET /v1.0/get-messages?conversationId=IDGOESHERE&pageSize=PAGESIZE HTTP/1.1`.
 
 **These requests can be seen in Fiddler, and when you view the request containing `POST /v1.0/send-message HTTP/1.1`, (to [chat.roblox.com](https://chat.roblox.com).)**
+
+## Not 100% positive on this part ;-)
+ROBLOX's chat sends **JSON** code to (chat.roblox.com?) when you send a message and if viewed from Fiddler, you can see the message sent.
+
+# On the recieving end of your chats
+## Again, not 100% sure if this is accurate ;-)
+
