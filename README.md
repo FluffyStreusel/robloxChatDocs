@@ -29,9 +29,25 @@ and once again, it checks for messages at `GET /v1.0/get-messages?conversationId
 
 **These requests can be seen in Fiddler, and when you view the request containing `POST /v1.0/send-message HTTP/1.1`, (to [chat.roblox.com](https://chat.roblox.com).)**
 
-## Not 100% positive on this part ;-)
+## A little trick (Can be used with WireShark with some tinkering)
 ROBLOX's chat sends **JSON** code to (chat.roblox.com?) when you send a message and if viewed from Fiddler, you can see the message sent.
 
-# On the recieving end of your chats
-## Again, not 100% sure if this is accurate ;-)
+### Vulnerability tips
+When ROBLOX sends the message to it's server **(chat.roblox.com)**, it does sends cookies from ROBLOX's main site.
 
+### Miscellaneous
+When messages are intercepted, they may refer to where your message was sent from (http://www.roblox.com/home, etc.).
+
+# When you read your messages
+ROBLOX's systems automagically mark your messages as read as soon as you see them, by making an outbound request as follows;
+`POST /v1.0/mark-as-read HTTP/1.1`
+
+There are two parameters in the JSON code for this request and they are StatusMessage and Success.
+**Success** should always return `True`, unless you're having internet issues (or something else I don't know yet).
+**StatusMessage** should return `Successfully marked the messages as read` if successful. If an error, I'm not sure yet.
+
+For this request above (`POST /v1.0/mark-as-read HTTP/1.1`), you can send two different methods.
+These methods are `POST` and `OPTIONS`.
+ROBLOX sends two outgoing requests to `/v1.0/mark-as-read`. After this delicate dance of marking-as-read, the message returns to ROBLOX.com as read.
+
+`OPTIONS /v1.0/mark-as-read HTTP/1.1` and `POST /v1.0/mark-as-read HTTP/1.1` are these two outgoing requests.
