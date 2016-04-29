@@ -25,3 +25,5 @@ When you send a message, ROBLOX sends out **(3?)** different requests to their d
 `OPTIONS /v1.0/send-message HTTP/1.1`,
 `POST /v1.0/send-message HTTP/1.1`,
 and once again, it checks for messages at `GET /v1.0/get-messages?conversationId=IDGOESHERE&pageSize=PAGESIZE HTTP/1.1`.
+
+**These requests can be seen in Fiddler, and when you view the request containing `POST /v1.0/send-message HTTP/1.1`, (to [chat.roblox.com](https://chat.roblox.com).)**
