@@ -51,3 +51,12 @@ These methods are `POST` and `OPTIONS`.
 ROBLOX sends two outgoing requests to `/v1.0/mark-as-read`. After this delicate dance of marking-as-read, the message returns to ROBLOX.com as read.
 
 `OPTIONS /v1.0/mark-as-read HTTP/1.1` and `POST /v1.0/mark-as-read HTTP/1.1` are these two outgoing requests.
+### Other Miscellaneous Discoveries
+The chat domain does not have a *robots.txt*.
+
+## When you create a party
+ROBLOX sends one outgoing request that says `OPTIONS /v1.0/party/create HTTP/1.1`. This creates the party, but I don't know the parameters at this moment.
+
+Secondly, it creates the party based on a second request that contains the conversationId and the invited user's Id.
+
+Thirdly, a request is sent that says `GET /v1.0/party/get-current HTTP/1.1`. This contains a huge group of information readable in JSON.
